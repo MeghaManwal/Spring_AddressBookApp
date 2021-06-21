@@ -4,7 +4,6 @@ import com.bridgelabz.addressbookapp.dto.AddressBookDTO;
 
 public class AddressBookData {
 	
-
 	private int personId;
 	private String firstName;
 	private String lastName;
@@ -47,6 +46,12 @@ public class AddressBookData {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	@Override
+	public String toString() {
+		return "AddressBookData [personId=" + personId + ", firstName=" + firstName + ", "
+				+ "lastName=" + lastName + ", address=" + address + "]";
 	}
 
 }
