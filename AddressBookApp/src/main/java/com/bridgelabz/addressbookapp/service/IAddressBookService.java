@@ -9,7 +9,7 @@ public interface IAddressBookService {
 	List<AddressBookData> getAddressbookData();
 	AddressBookData getAddressbookDataById(int id);
 	AddressBookData createAddressbookData(AddressBookDTO bookDTO);
-	AddressBookData updateAddressbookData(AddressBookDTO bookDTO);
+	AddressBookData updateAddressbookData(int id, AddressBookDTO bookDTO);
 	void deleteAddressbookData(int id);
 
 }
