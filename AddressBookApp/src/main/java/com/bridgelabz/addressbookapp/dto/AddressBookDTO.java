@@ -1,9 +1,23 @@
 package com.bridgelabz.addressbookapp.dto;
 
-public class AddressBookDTO {
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
+import lombok.Data;
+
+public @Data class AddressBookDTO {
+
+
+	@Pattern(regexp = "^[A-Z]{1}[a-z A-Z\\s]{2,}$", message = "Employee Name Invalid")
+	@NotEmpty(message = "Employee name cannot be null")
 	public String firstName;
+	
+
+	@Pattern(regexp = "^[A-Z]{1}[a-z A-Z\\s]{2,}$", message = "Employee Name Invalid")
+	@NotEmpty(message = "Employee name cannot be null")
 	public String lastName;
+	
+	@NotEmpty(message = "Employee name cannot be null")
 	public String address;
 	
 	public AddressBookDTO() { }
@@ -12,35 +26,6 @@ public class AddressBookDTO {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	@Override
-	public String toString() {
-		return "AddressBookDTO [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + "]";
 	}
 		
 }

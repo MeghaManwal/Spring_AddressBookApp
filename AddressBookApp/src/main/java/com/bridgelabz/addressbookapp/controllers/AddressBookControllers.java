@@ -2,6 +2,8 @@ package com.bridgelabz.addressbookapp.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +46,7 @@ public class AddressBookControllers {
 		
 	
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> addAddressbookData(@RequestBody AddressBookDTO addressbookDTO) {
+	public ResponseEntity<ResponseDTO> addAddressbookData(@Valid @RequestBody AddressBookDTO addressbookDTO) {
 		AddressBookData bookData = null;
 		bookData = addressbookservice.createAddressbookData(addressbookDTO);
 		ResponseDTO respDTO = new ResponseDTO("Created Addressbook Data Successfully", bookData);
