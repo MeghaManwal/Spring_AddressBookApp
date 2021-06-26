@@ -15,13 +15,16 @@ public @Data class AddressBookDTO {
 	@NotBlank(message = "Address cannot be null")
 	public String address;
 	
+	@NotBlank(message = "City cannot be null")
 	public String city;
 	
+	@NotBlank(message = "State cannot be null")
 	public String state;
 	
+	@NotBlank(message = "Zipcode cannot be null")
 	public Number zipcode;
 	
-	@Pattern(regexp = "^[+][0-9]{1,}\\s[1-9]{1}[0-9]{9}$", message = "PhoneNumber Invalid")
+	@Pattern(regexp = "^[+][0-9]{1,}\\s[1-9]{1}[0-9]{9}$", message = "PhoneNumber is Invalid")
 	public String phonenumber;
 			
 }
