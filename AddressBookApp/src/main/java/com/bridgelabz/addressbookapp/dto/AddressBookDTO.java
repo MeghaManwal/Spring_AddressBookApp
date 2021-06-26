@@ -8,25 +8,20 @@ import lombok.Data;
 
 public @Data class AddressBookDTO {
 
-
-	@Pattern(regexp = "^[A-Z]{1}[a-z A-Z\\s]{2,}$", message = "Person FirstName Invalid")
-	@NotEmpty(message = "FirstName cannot be null")
-	public String firstName;
-	
-
-	@Pattern(regexp = "^[A-Z]{1}[a-z A-Z\\s]{2,}$", message = "Person LastName Invalid")
-	@NotEmpty(message = "LastName cannot be null")
-	public String lastName;
+	@Pattern(regexp = "^[A-Z]{1}[a-z A-Z\\s]{2,}$", message = "Person Name Invalid")
+	@NotEmpty(message = "Name cannot be null")
+	public String name;
 	
 	@NotBlank(message = "Address cannot be null")
 	public String address;
 	
-	public AddressBookDTO() { }
-
-	public AddressBookDTO(String firstName, String lastName, String address) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-	}
-		
+	public String city;
+	
+	public String state;
+	
+	public Number zipcode;
+	
+	@Pattern(regexp = "^[+][0-9]{1,}\\s[1-9]{1}[0-9]{9}$", message = "PhoneNumber Invalid")
+	public String phonenumber;
+			
 }
