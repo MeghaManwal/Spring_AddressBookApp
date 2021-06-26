@@ -20,46 +20,38 @@ public class AddressBookService implements IAddressBookService {
 	@Autowired
 	private AddressBookRepository addressbookrepo;
 	
-	private List<AddressBookData> addressbookDataList = new ArrayList<>();
-	
 	@Override
 	public List<AddressBookData> getAddressbookData() {
-		return addressbookDataList;
+		return addressbookrepo.findAll();
 	}
 
 	@Override
 	public AddressBookData getAddressbookDataById(int id) {
-		return addressbookDataList.stream()
-				.filter(personData -> personData.getPersonId() == id)
-				.findFirst()
-				.orElseThrow(() -> new AddressBookException("Person Not Found"));
+		return addressbookrepo
+				.findById(id)
+				.orElseThrow(() -> new AddressBookException("Person Not Id: "+id+
+						                                     "doesn't exist."));
 	}
 
 	@Override
 	public AddressBookData createAddressbookData(AddressBookDTO bookDTO) {
 		AddressBookData bookData = null;
-		bookData=new AddressBookData(addressbookDataList.size()+1, bookDTO);
+		bookData=new AddressBookData(bookDTO);
 		log.debug("Person Data: "+bookData.toString());
-		addressbookDataList.add(bookData);
 		return addressbookrepo.save(bookData);
 	}
 
     @Override
     public AddressBookData updateAddressbookData(int id, AddressBookDTO bookDTO) {
     	AddressBookData bookData = this.getAddressbookDataById(id);
-		bookData.setName(bookDTO.name);
-		bookData.setAddress(bookDTO.address);
-		bookData.setCity(bookDTO.city);
-		bookData.setState(bookDTO.state);
-		bookData.setZipcode(bookDTO.zipcode);
-		bookData.setPhonenumber(bookDTO.phonenumber);
-		return addressbookDataList.set(id-1,bookData);
+		bookData.updateAddressbookData(bookDTO);
+		return addressbookrepo.save(bookData);
     }
     
     @Override
 	public void deleteAddressbookData(int id) {
 		AddressBookData bookData = this.getAddressbookDataById(id);
-		addressbookDataList.remove(bookData);
+		addressbookrepo.delete(bookData);
 	}
 
 }

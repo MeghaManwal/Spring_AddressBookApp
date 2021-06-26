@@ -28,13 +28,14 @@ public @Data class AddressBookData {
 	public String phonenumber;
 	
 	public AddressBookData() { }
-	
-	public AddressBookData(AddressBookDTO bookDTO) {
-		this.updateAddressbookData(bookDTO);
-	}
-	
-	private void updateAddressbookData(AddressBookDTO bookDTO) {
 		
+	public void updateAddressbookData(AddressBookDTO addressbookDTO) {
+		this.name = addressbookDTO.name;
+		this.address = addressbookDTO.address;
+		this.city = addressbookDTO.city;
+		this.state = addressbookDTO.state;
+		this.zipcode = addressbookDTO.zipcode;
+		this.phonenumber = addressbookDTO.phonenumber;
 	}
 
 	public AddressBookData(int personId, AddressBookDTO addressbookDTO) {
@@ -47,4 +48,13 @@ public @Data class AddressBookData {
 		this.phonenumber = addressbookDTO.phonenumber;
 	}
 
+	public AddressBookData(AddressBookDTO addressbookDTO) {
+		this.name = addressbookDTO.name;
+		this.address = addressbookDTO.address;
+		this.city = addressbookDTO.city;
+		this.state = addressbookDTO.state;
+		this.zipcode = addressbookDTO.zipcode;
+		this.phonenumber = addressbookDTO.phonenumber;
+	}
+	
 }
