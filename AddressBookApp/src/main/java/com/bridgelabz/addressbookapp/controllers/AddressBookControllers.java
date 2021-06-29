@@ -27,7 +27,7 @@ public class AddressBookControllers {
 	@Autowired
 	private IAddressBookService addressbookservice;
 	
-	@RequestMapping(value={" ", "/","/get"})
+	@GetMapping(value={" ", "/","/get"})
 	public ResponseEntity<ResponseDTO> getAddressbookData() {
 		List<AddressBookData> bookDataList = null;
 		bookDataList = addressbookservice.getAddressbookData();
@@ -66,6 +66,14 @@ public class AddressBookControllers {
 	public ResponseEntity<ResponseDTO> deleteAddressbookData(@PathVariable("Id") int id) {
 		addressbookservice.deleteAddressbookData(id);
 		ResponseDTO respDTO = new ResponseDTO("Created Addressbook Data Successfully", "Deleted Id : "+ id);
+		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
+	}
+	
+	@GetMapping("/name/{name}")
+	public ResponseEntity<ResponseDTO> getAddessBookData(@PathVariable("name") String personName) {
+		List<AddressBookData> personDataList = null;
+		personDataList = addressbookservice.getPersonByName(personName);
+		ResponseDTO respDTO = new ResponseDTO("Get Call for Name Successful", personDataList);
 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	}
 }

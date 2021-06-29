@@ -54,4 +54,9 @@ public class AddressBookService implements IAddressBookService {
 		addressbookrepo.delete(bookData);
 	}
 
+	@Override
+	public List<AddressBookData> getPersonByName(String personName) {
+		return addressbookrepo.findPersonByName(personName);
+	}
+
 }
